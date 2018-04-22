@@ -1,0 +1,98 @@
+from pyautocad import Autocad, APoint
+from d_l import d_l
+from d_c import d_c
+from d_groove import d_groove,d_groovea
+from d_c import d_c
+from math import tan
+
+def d_bearing(acad,x,y1,y2,bin,bout,bb):
+    #下
+    pin1=APoint(x-bin/2,y1+bb/2)
+    pin2=APoint(x-bin/2,y1-bb/2)
+    pin3=APoint(x+bin/2,y1+bb/2)
+    pin4=APoint(x+bin/2,y1-bb/2)
+    d_l(acad,pin1,pin2)
+    d_l(acad,pin4,pin2)
+    d_l(acad,pin3,pin4)
+    d_l(acad,pin1,pin3)
+    pout1=APoint(x-bout/2,y1+bb/2)
+    pout2=APoint(x-bout/2,y1-bb/2)
+    d_l(acad,pout1,pout2)
+    d_l(acad,pout1,pin1)
+    d_l(acad,pout2,pin2)
+    d_l(acad,pout1,pin2)
+    d_l(acad,pout2,pin1)
+    w=(bout-bin)/2
+    pr1=APoint(x+bout/2-w/2,y1+bb/2)
+    d_l(acad,pr1,pin3)
+    pr2=APoint(x+bout/2-w/2,y1+bb/4)
+    d_l(acad,pr1,pr2)
+
+    pr3=APoint(x+bout/2,y1+bb/4)
+    pr4=APoint(x+bout/2,y1-bb/2)
+    d_l(acad,pr4,pr3)
+    pr5=APoint(x+bout/2-w*5/8,y1-bb/2)
+    d_l(acad,pr5,pr4)
+    pr6=APoint(x+bout/2-w/8,y1+bb/4)
+    d_l(acad,pr6,pr3)
+    d_l(acad,pr6,pr5)
+    pr7=APoint(x+bin/2+w*3/8,y1+3/8*bb)
+    pr8=APoint(x+bout/2,y1+3/8*bb-tan(3.1416*25/180)*w*5/8)
+    d_l(acad,pr7,pr8)
+    pr9=APoint(x+bin/2+w/8,y1-bb/2)
+    d_l(acad,pr9,pr2)
+    d_l(acad,pr9,pin4)
+    pr10=APoint(x+bin/2+w/8,y1-bb/4)
+    d_l(acad,pr10,pr7)
+    pr11=APoint(x+bin/2+w/8+tan(3.1416*(65/180))*bb/4,y1-bb/2)
+    d_l(acad,pr10,pr11)
+    pr12=APoint(x+bin/2+w*3/16,y1-bb/2)
+    pr13=APoint(x+bin/2+w*3/16+tan(3.1416*(25/180))*bb,y1+bb/2)
+    d_l(acad,pr12,pr13)
+
+    #上
+    pin1=APoint(x-bin/2,y2-bb/2)
+    pin2=APoint(x-bin/2,y2+bb/2)
+    pin3=APoint(x+bin/2,y2-bb/2)
+    pin4=APoint(x+bin/2,y2+bb/2)
+    d_l(acad,pin1,pin2)
+    d_l(acad,pin4,pin2)
+    d_l(acad,pin3,pin4)
+    d_l(acad,pin1,pin3)
+    pout1=APoint(x-bout/2,y2-bb/2)
+    pout2=APoint(x-bout/2,y2+bb/2)
+    d_l(acad,pout1,pout2)
+    d_l(acad,pout1,pin1)
+    d_l(acad,pout2,pin2)
+    d_l(acad,pout1,pin2)
+    d_l(acad,pout2,pin1)
+    w=(bout-bin)/2
+    pr1=APoint(x+bout/2-w/2,y2-bb/2)
+    d_l(acad,pr1,pin3)
+    pr2=APoint(x+bout/2-w/2,y2-bb/4)
+    d_l(acad,pr1,pr2)
+
+    pr3=APoint(x+bout/2,y2-bb/4)
+    pr4=APoint(x+bout/2,y2+bb/2)
+    d_l(acad,pr4,pr3)
+    pr5=APoint(x+bout/2-w*5/8,y2+bb/2)
+    d_l(acad,pr5,pr4)
+    pr6=APoint(x+bout/2-w/8,y2-bb/4)
+    d_l(acad,pr6,pr3)
+    d_l(acad,pr6,pr5)
+    pr7=APoint(x+bin/2+w*3/8,y2-3/8*bb)
+    pr8=APoint(x+bout/2,y2-3/8*bb+tan(3.1416*25/180)*w*5/8)
+    d_l(acad,pr7,pr8)
+    pr9=APoint(x+bin/2+w/8,y2+bb/2)
+    d_l(acad,pr9,pr2)
+    d_l(acad,pr9,pin4)
+    pr10=APoint(x+bin/2+w/8,y2+bb/4)
+    d_l(acad,pr10,pr7)
+    pr11=APoint(x+bin/2+w/8+tan(3.1416*(65/180))*bb/4,y2+bb/2)
+    d_l(acad,pr10,pr11)
+    pr12=APoint(x+bin/2+w*3/16,y2+bb/2)
+    pr13=APoint(x+bin/2+w*3/16+tan(3.1416*(25/180))*bb,y2-bb/2)
+    d_l(acad,pr12,pr13)
+
+
+
